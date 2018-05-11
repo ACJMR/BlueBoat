@@ -14,3 +14,6 @@ We decided to order the queue with highest priority at the highest-index side of
 
   peekMin() also has constant running time, because the get method in ArrayList runs in constant time, and all peekMin() does is employ the get method. peekMin() returns the rightmost element in the ArrayList container.
 
+- int size
+
+  We decided on having a size attribute for the APQ. The size attribute makes it easier to implement removeMin() and peekMin(), because we then know that the rightmost element in ArrayList has an index of size - 1. removeMin() decrements size by 1 if the APQ is not empty, and add(String x) increments size by 1.
