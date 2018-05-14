@@ -1,6 +1,12 @@
+/*
+Blue Boat
+APCS2 Pd08
+HW49 -- Sink || Swim
+2018-05-16
+*/
+
 /*****************************************************
  * class ALHeap
- * SKELETON
  * Implements a min heap using an ArrayList as underlying container
  *****************************************************/
 
@@ -11,12 +17,15 @@ public class ALHeap
 
   //instance vars
   private ArrayList<Integer> _heap; 
+    private int _size;
 
   /*****************************************************
    * default constructor  ---  inits empty heap
    *****************************************************/
   public ALHeap() 
   { 
+      _heap = new ArrayList<Integer>;
+      _size = 0;
   }
 
 
@@ -27,9 +36,14 @@ public class ALHeap
    * a) a level-order traversal of the tree (simple version)
    * b) ASCII representation of the tree (more complicated, more fun)
    *****************************************************/
+    //for now, returns level-order traversal of the tree
   public String toString() 
   { 
-  }//O(?)
+      String retStr = "";
+      for (Integer i: _heap)
+	  retStr += i + " ";
+      return retStr;
+  }//O(n)
 
 
   /*****************************************************
@@ -38,6 +52,7 @@ public class ALHeap
    *****************************************************/
   public boolean isEmpty()
   { 
+      return _size <= 0;
   }//O(?)
 
 
@@ -48,6 +63,7 @@ public class ALHeap
    *****************************************************/
   public Integer peekMin()
   { 
+      
   }//O(?)
 
 
@@ -79,6 +95,7 @@ public class ALHeap
    *****************************************************/
   private int minChildPos( int pos )
   { 
+      
   }//O(?)
   
 
