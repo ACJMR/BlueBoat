@@ -1,0 +1,32 @@
+Team Blue Boat
+Colin Hosking, Clara Mohri, Shruthi Venkata
+APCS2 Pd08
+HW48 — Heap o’ Trouble
+2018-05-14
+
+For the adding algorithms, add the element to the end of the array and "walk it up" the tree until it is its correct location.
+Remember, a parent's index will always be (i/2) where i is the child's index.
+
+Add Min-Heap (min value at root)
+
+1. Add element addedValue to end of array.
+2. If addedValue is less than parent (index of i/2), swap addedValue and parent. Go to step 2.
+3. Else addedValue is in its correct location.
+
+Add Max-Heap (max value at root)
+
+1. Add element addedValue to end of array.
+2. If addedValue is greater than parent, swap addedValue and parent. Go to step 2.
+3. Else addedValue is in its correct location.
+
+Remove Min-Heap (min value at root)
+
+1. Remove element from array. Record removed element's index i.
+2. Check which child is smaller, move said child to i, set i to said child's old index.
+3. Repeat step 2 until child is null.
+
+Remove Max-Heap (max value at root)
+
+1. Remove element from array. Record removed element’s index i.
+2. Check which child is greater, move said child to i, set i to said child’s old index.
+3. Repeat step 2 until child is null.
