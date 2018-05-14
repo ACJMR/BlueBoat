@@ -1,4 +1,7 @@
 # BlueBoat
+## Colin Hosking, Clara Mohri, Shruthi Venkata
+### APCS Pd08
+
 
 # Decisions + runtime  
 We decided to order the queue with highest priority at the highest-index side of the ArrayList. 
