@@ -24,7 +24,6 @@ We decided to order the queue with highest priority at the highest-index side of
 
 # heap todo
 
-0. Add a `_size` instance var ? 
 1. Write constructor method
 2. Write `isEmpty()` method
 3. Write `add(Integer)` method
