@@ -30,4 +30,16 @@ We decided to order the queue with highest priority at the highest-index side of
 4. Write `toString()` method
 5. Write `peekMin()` method
 6. Write `minChildPos(int)` method
-6. Write `removeMin()` method
+7. Write `removeMin()` method
+
+# Algorithms: 
+Add:
+1. Add to the end of the heap
+2. If the parent is  <= than the added value, then keep in place
+3. Else, swap the parent and the added value
+4. Keep doing this until the parent of the added value is <= the added value
+
+RemoveMin: 
+1. If ALHeap is empty, then return null
+2. Else, swap the root / item in first position (min) with the item in the last position. Now remove minimum value, which is in the rightmost position of heap
+3. Keep on swapping the value that replaced the minimum value at the root with it's minimum value child until it no longer has children or one child that is larger
