@@ -31,24 +31,23 @@ public class ALHeap
     
     /*****************************************************
      * toString()  ---  overrides inherited method
-     * Returns either 
-     * a) a level-order traversal of the tree (simple version)
-     * b) ASCII representation of the tree (more complicated, more fun)
+     * Returns levels of tree
      *****************************************************/
-    //for now, returns level-order traversal of the tree
     public String toString() 
     { 
 	String retStr = "";
         int pow = 0;
         int num = 0;
         for (Integer i: _heap){
-            retStr += i + " ";
-            num += 1;
-            if (num >= Math.pow(2, pow)){
-                retStr += "\n";
-                pow += 1;
-            }
-        }
+	    if (i != null){
+		retStr += i + " ";
+		num += 1;
+		if (num >= Math.pow(2, pow)){
+		    retStr += "\n";
+		    pow += 1;
+		}
+	    }
+	}
         return retStr;
     }//O(n)
     
@@ -106,26 +105,28 @@ public class ALHeap
      * removeMin()  ---  means of removing an element from heap
      * Removes and returns least element in heap.
      * Postcondition: Tree maintains heap property.
+     * Proced re for removing min: 
+     * 1. If ALHeap is empty, then return null
+       2. Else, swap the root / item in first position (min) with the item in the last position. Now remove minimum value, which is in the rightmost position of _heap
+       3. Keep on swapping the value that replaced the minimum value at the root with it's minimum value child until it no longer has children
      *****************************************************/
     public Integer removeMin()
     {
-	//System.out.println(_heap.isEmpty());
-	//System.out.println(_heap.size());
-	if (_heap.isEmpty()){
+
+	if (isEmpty()){
 	    return null;
 	}
-	swap(1,_heap.size()-1);
+	swap(1, _heap.size()-1);
 	int ans = _heap.remove(_heap.size()-1);
 	int parent = 1;
 	int child = minChildPos(parent);
 	while(child > -1){
-	    //System.out.println(parent + " " +  child);
 	    swap(parent,child);
 	    parent = child;
 	    child = minChildPos(parent);
 	}
 	return ans;
-    }//O(?)
+    }//O(logn)
     
     
     /*****************************************************
@@ -144,7 +145,7 @@ public class ALHeap
 	    else return 2*pos;
 	}
 
-    }//O(?)
+    }//O(1)
     
     
     //************ aux helper fxns ***************
@@ -213,11 +214,9 @@ public class ALHeap
 	  System.out.println(pile);
 	  System.out.println("removing " + pile.removeMin() + "...");
 	  System.out.println(pile);
-	  System.out.println(pile.isEmpty());
 	  System.out.println("removing " + pile.removeMin() + "...");
 	  System.out.println(pile);
-	   /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~	  
-	  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+
     }//end main()
     
 }//end class ALHeap
