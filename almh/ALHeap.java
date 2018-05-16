@@ -11,6 +11,7 @@
  *****************************************************/
 
 import java.util.ArrayList;
+import java.lang.Math;
 
 public class ALHeap
 {
@@ -39,8 +40,16 @@ public class ALHeap
     public String toString() 
     { 
 	String retStr = "";
-	for (Integer i: _heap)
+	int pow = 0;
+	int num = 0;
+	for (Integer i: _heap){
 	    retStr += i + " ";
+	    num += 1;
+	    if (num >= Math.pow(2, pow)){
+		retStr += "\n";
+		pow += 1;
+	    }
+	}
 	return retStr;
     }//O(n)
     
@@ -114,15 +123,15 @@ public class ALHeap
      *****************************************************/
     private int minChildPos( int pos )
     { 
-	if (pos >= _heap.size()) return -1;
+	if (pos >= _heap.size() || pos <= 0) return -1;
 	if ( (2*pos) >= _heap.size()) return -1;
-	if ((2*pos) == _heap.size()) return 2*pos;
+	if ((2*pos) == _heap.size() - 1) return 2*pos;
 	else {
 	    if (_heap.get(2*pos) > _heap.get(2*pos + 1)) return (2*pos + 1);
 	    else return 2*pos;
 	}
 
-    }//O(?)
+    }//O(1)
     
     
     //************ aux helper fxns ***************
@@ -169,6 +178,10 @@ public class ALHeap
 	  System.out.println(pile);
 	  pile.add(9);
 	  System.out.println(pile);
+
+	  for (int i = 0; i < 10; i++){
+	      System.out.println(i + ": " + pile.minChildPos(i));
+	  }
 	  /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~	  
 	  System.out.println("removing " + pile.removeMin() + "...");
 	  System.out.println(pile);
