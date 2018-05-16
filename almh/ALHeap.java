@@ -108,7 +108,7 @@ public class ALHeap
      * Proced re for removing min: 
      * 1. If ALHeap is empty, then return null
        2. Else, swap the root / item in first position (min) with the item in the last position. Now remove minimum value, which is in the rightmost position of _heap
-       3. Keep on swapping the value that replaced the minimum value at the root with it's minimum value child until it no longer has children
+       3. Keep on swapping the value that replaced the minimum value at the root with it's minimum value child until it no longer has children or one child that is larger
      *****************************************************/
     public Integer removeMin()
     {
