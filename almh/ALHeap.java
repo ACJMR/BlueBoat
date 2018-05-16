@@ -110,12 +110,17 @@ public class ALHeap
      * Returns index of least child, or 
      * -1 if no children, or if input pos is not in ArrayList
      * Postcondition: Tree unchanged
+     * The children of a parent are located at 2* pos and/or 2*pos + 1, if they exist
      *****************************************************/
     private int minChildPos( int pos )
     { 
-	/*	if (pos > _heap.size()) return -1;
-		if ((2*p) + 1*/
-	return 1;
+	if (pos >= _heap.size()) return -1;
+	if ( (2*pos) >= _heap.size()) return -1;
+	if ((2*pos) == _heap.size()) return 2*pos;
+	else {
+	    if (_heap.get(2*pos) > _heap.get(2*pos + 1)) return (2*pos + 1);
+	    else return 2*pos;
+	}
 
     }//O(?)
     
