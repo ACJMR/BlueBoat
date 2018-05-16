@@ -39,9 +39,17 @@ public class ALHeap
     public String toString() 
     { 
 	String retStr = "";
-	for (Integer i: _heap)
-	    retStr += i + " ";
-	return retStr;
+        int pow = 0;
+        int num = 0;
+        for (Integer i: _heap){
+            retStr += i + " ";
+            num += 1;
+            if (num >= Math.pow(2, pow)){
+                retStr += "\n";
+                pow += 1;
+            }
+        }
+        return retStr;
     }//O(n)
     
     
