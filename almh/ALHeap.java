@@ -11,7 +11,6 @@
  *****************************************************/
 
 import java.util.ArrayList;
-import java.lang.Math;
 
 public class ALHeap
 {
@@ -40,16 +39,8 @@ public class ALHeap
     public String toString() 
     { 
 	String retStr = "";
-	int pow = 0;
-	int num = 0;
-	for (Integer i: _heap){
+	for (Integer i: _heap)
 	    retStr += i + " ";
-	    num += 1;
-	    if (num >= Math.pow(2, pow)){
-		retStr += "\n";
-		pow += 1;
-	    }
-	}
 	return retStr;
     }//O(n)
     
@@ -61,7 +52,7 @@ public class ALHeap
     public boolean isEmpty()
     { 
 	return _heap.size() <= 1;
-    }//O(?)
+    }//O(1)
     
     
     /*****************************************************
@@ -109,8 +100,23 @@ public class ALHeap
      * Postcondition: Tree maintains heap property.
      *****************************************************/
     public Integer removeMin()
-    { 
-	return 1;
+    {
+	//System.out.println(_heap.isEmpty());
+	//System.out.println(_heap.size());
+	if (_heap.isEmpty()){
+	    return null;
+	}
+	swap(1,_heap.size()-1);
+	int ans = _heap.remove(_heap.size()-1);
+	int parent = 1;
+	int child = minChildPos(parent);
+	while(child > -1){
+	    //System.out.println(parent + " " +  child);
+	    swap(parent,child);
+	    parent = child;
+	    child = minChildPos(parent);
+	}
+	return ans;
     }//O(?)
     
     
@@ -123,15 +129,14 @@ public class ALHeap
      *****************************************************/
     private int minChildPos( int pos )
     { 
-	if (pos >= _heap.size() || pos <= 0) return -1;
-	if ( (2*pos) >= _heap.size()) return -1;
-	if ((2*pos) == _heap.size() - 1) return 2*pos;
+	if (pos >= _heap.size()) return -1;
+	if ( (2*pos) >= _heap.size()-1) return -1;
 	else {
 	    if (_heap.get(2*pos) > _heap.get(2*pos + 1)) return (2*pos + 1);
 	    else return 2*pos;
 	}
 
-    }//O(1)
+    }//O(?)
     
     
     //************ aux helper fxns ***************
@@ -178,11 +183,10 @@ public class ALHeap
 	  System.out.println(pile);
 	  pile.add(9);
 	  System.out.println(pile);
-
-	  for (int i = 0; i < 10; i++){
-	      System.out.println(i + ": " + pile.minChildPos(i));
-	  }
-	  /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~	  
+	
+	  System.out.println("removing " + pile.removeMin() + "...");
+	  System.out.println(pile);
+	   
 	  System.out.println("removing " + pile.removeMin() + "...");
 	  System.out.println(pile);
 	  System.out.println("removing " + pile.removeMin() + "...");
@@ -201,10 +205,10 @@ public class ALHeap
 	  System.out.println(pile);
 	  System.out.println("removing " + pile.removeMin() + "...");
 	  System.out.println(pile);
+	  System.out.println(pile.isEmpty());
 	  System.out.println("removing " + pile.removeMin() + "...");
 	  System.out.println(pile);
-	  System.out.println("removing " + pile.removeMin() + "...");
-	  System.out.println(pile);
+	   /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~	  
 	  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
     }//end main()
     
