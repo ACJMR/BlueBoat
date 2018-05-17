@@ -1,12 +1,11 @@
 /*
   Blue Boat
+  Colin Hosking, Clara Mohri, Shruthi Venkata
   APCS2 Pd08
-  HW49 -- Sink || Swim
-  2018-05-16
 */
 
 /*****************************************************
- * class ALHeap
+ * class ALHeapMin
  * Implements a min heap using an ArrayList as underlying container
  *****************************************************/
 
@@ -39,15 +38,13 @@ public class ALHeapMin
         int pow = 0;
         int num = 0;
         for (Integer i: _heap){
-	    if (i != null){
-		retStr += i + " ";
-		num += 1;
-		if (num >= Math.pow(2, pow)){
-		    retStr += "\n";
-		    pow += 1;
-		}
+	    retStr += i + " ";
+	    num += 1;
+	    if (num >= Math.pow(2, pow)){
+		retStr += "\n";
+		pow += 1;
 	    }
-	}
+	}	
         return retStr;
     }//O(n)
     
@@ -108,7 +105,7 @@ public class ALHeapMin
      * Proced re for removing min: 
      * 1. If ALHeap is empty, then return null
        2. Else, swap the root / item in first position (min) with the item in the last position. Now remove minimum value, which is in the rightmost position of _heap
-       3. Keep on swapping the value that replaced the minimum value at the root with it's minimum value child until it no longer has children or one child that is larger
+       3. Keep on swapping the value that replaced the minimum value at the root with it's minimum value child until it no longer has children or one child that is smaller
      *****************************************************/
     public Integer removeMin()
     {
