@@ -144,6 +144,14 @@ public class ALHeapMin
 
     }//O(1)
     
+    /*****************************************
+     * int getSize() --- 
+     * Returns size of _heap
+     ***************************************/
+    public int getSize(){
+	return _heap.size();
+    }
+
     
     //************ aux helper fxns ***************
     private Integer minOf( Integer a, Integer b )

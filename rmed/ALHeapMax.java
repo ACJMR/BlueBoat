@@ -107,7 +107,7 @@ public class ALHeapMax
        2. Else, swap the root / item in first position (max) with the item in the last position. Now remove maximum value, which is in the rightmost position of _heap
        3. Keep on swapping the value that replaced the maximum value at the root with it's maximum value child until it no longer has children or one child that is larger
      *****************************************************/
-    public Integer removeMin()
+    public Integer removeMax()
     {
 
 	if (isEmpty()){
@@ -143,7 +143,15 @@ public class ALHeapMax
 	}
 
     }//O(1)
-    
+
+    /*****************************************************
+     * int getSize() 
+     * returns size of _heap
+     ***************************************************/
+    public int getSize(){
+	return _heap.size();
+    }
+
     
     //************ aux helper fxns ***************
     private Integer minOf( Integer a, Integer b )
@@ -191,32 +199,32 @@ public class ALHeapMax
 	  pile.add(9);
 	  System.out.println(pile);
 
-	  /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	
 
-	  System.out.println("removing " + pile.removeMin() + "...");
+	  System.out.println("removing " + pile.removeMax() + "...");
 	  System.out.println(pile);
 	   
-	  System.out.println("removing " + pile.removeMin() + "...");
+	  System.out.println("removing " + pile.removeMax() + "...");
 	  System.out.println(pile);
-	  System.out.println("removing " + pile.removeMin() + "...");
+	  System.out.println("removing " + pile.removeMax() + "...");
 	  System.out.println(pile);
-	  System.out.println("removing " + pile.removeMin() + "...");
+	  System.out.println("removing " + pile.removeMax() + "...");
 	  System.out.println(pile);
-	  System.out.println("removing " + pile.removeMin() + "...");
+	  System.out.println("removing " + pile.removeMax() + "...");
 	  System.out.println(pile);
-	  System.out.println("removing " + pile.removeMin() + "...");
+	  System.out.println("removing " + pile.removeMax() + "...");
 	  System.out.println(pile);
-	  System.out.println("removing " + pile.removeMin() + "...");
+	  System.out.println("removing " + pile.removeMax() + "...");
 	  System.out.println(pile);
-	  System.out.println("removing " + pile.removeMin() + "...");
+	  System.out.println("removing " + pile.removeMax() + "...");
 	  System.out.println(pile);
-	  System.out.println("removing " + pile.removeMin() + "...");
+	  System.out.println("removing " + pile.removeMax() + "...");
 	  System.out.println(pile);
-	  System.out.println("removing " + pile.removeMin() + "...");
+	  System.out.println("removing " + pile.removeMax() + "...");
 	  System.out.println(pile);
-	  System.out.println("removing " + pile.removeMin() + "...");
+	  System.out.println("removing " + pile.removeMax() + "...");
 	  System.out.println(pile);
-	  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+	
     }//end main()
     
 }//end class ALHeapMax
