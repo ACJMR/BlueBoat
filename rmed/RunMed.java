@@ -2,11 +2,24 @@
   Blue Boat
   Colin Hosking, Clara Mohri, Shruthi Venkata
   APCS2 Pd08
+  HW50 -- Run Run Run
+  2018-05-18
 */
 
 /********************************************
  * class RunMed
  * Implements an efficient running median algorithm.
+Add
+1. If item is less than root of lilVals, add it to lilVals. 
+   Else: add it to bigVals
+2. Balance lilVals and bigVals:
+   While lilVals size - bigVals size exceeds 1 ---> remove the root of lilVals and add it to bigVals
+   While bigVals size - lilVals size exceeds 1 ---> remove the root of bigVals and add it to lilVals
+
+getMedian
+1. If the size of lilVal and bigVal are equal, return the average of their roots
+2. If bigVal is larger than lilVal, return the root of bigVal.
+3. Else: return the root of lilVal
  ********************************************/
 
 import java.lang.Math;
@@ -36,12 +49,12 @@ public class RunMed{
 	int LVL = lilVals.getSize();
 	double BVR = bigVals.peekMin();
 	double LVR = lilVals.peekMax();
-	if (BVL == LVL)
+	if (BVL == LVL) //If the size of lilVal and bigVal are equal, return the average of their roots
 	    med = ( (BVR + LVR) / 2);
-	else if (BVL > LVL) 
+	else if (BVL > LVL) // If bigVal is larger than lilVal, return the root of bigVal.
 	    med = BVR;
 	else 
-	    med = LVR;
+	    med = LVR; //Else: return the root of lilVal
 	return med; 	    
     }
 
